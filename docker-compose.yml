@@ -1,0 +1,33 @@
+app:
+  restart: always
+  build: ./app
+  expose:
+    - "8000"
+  links:
+    - postgres:postgres
+  volumes:
+    - ./app:/usr/src/app
+  env_file: .env
+  environment:
+    DEBUG: 'true'
+  command: /usr/local/bin/gunicorn INSERT YOUR PROJECT NAME.wsgi:application -w 2 -b :8000
+
+nginx:
+  restart: always
+  build: ./nginx/
+  ports:
+    - "80:80"
+  volumes:
+    - /www/static
+  volumes_from:
+    - app
+  links:
+    - app:app
+
+postgres:
+  restart: always
+  image: postgres:latest
+  ports:
+    - "5432:5432"
+  volumes:
+    - pgdata:/var/lib/postgresql/data/
