@@ -36,3 +36,4 @@ You have made your Django project get the database and secret key data from the 
 1. Run `docker-compose build`
 2. After building run `docker-compose up`
 3. In your browser go to your docker machine's IP address and you should see your app
+4. If the CSS isn't loading run `docker-compose run app /usr/local/bin/python manage.py collectstatic` and then reload
