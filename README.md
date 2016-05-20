@@ -1,4 +1,4 @@
-## Django Rest Application in Docker with Continuous Integration
+## Django REST Application in Docker with Continuous Integration
 ### Includes
 * Python 2.X and Python 3.X
 * PostgreSQL
